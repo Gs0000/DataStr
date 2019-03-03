@@ -1,6 +1,12 @@
 #ifndef _GSDEF_H_
 #define _GSDEF_H_
 
+#if 1
+#define Gs_WIN
+#else
+#define Gs_LINUX
+#endif
+
 typedef char      				GCH8;
 typedef short  			   	   	GI16;
 typedef int						GI32;
@@ -14,9 +20,9 @@ typedef unsigned long long     	GU64;
 typedef float                   GFLT;
 typedef double                  GDBL;
 
-#define G_SUCCESS                0
-#define G_ERROR                 -1
-#define G_FAILURE               -2
-#define G_ILLEGAL               -3
+#define Gs_SUCCESS                0
+#define Gs_ERROR                 -1
+#define Gs_FAILURE               -2
+#define Gs_ILLEGAL               -3
 
 #endif

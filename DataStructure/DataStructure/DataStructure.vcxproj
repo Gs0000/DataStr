@@ -146,11 +146,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\LIFO.c" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Stack.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Project.h" />
+    <ClInclude Include="..\source\GsDEF.h" />
+    <ClInclude Include="..\source\LIFO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
