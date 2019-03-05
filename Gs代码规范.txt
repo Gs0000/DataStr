@@ -1,0 +1,80 @@
+================ 命名规范 ================
+1. 常量命名
+    (1) 宏的命名：由大写字母开头的单词组合而成，用'_'分割每个单词
+         --> example:  #define TIMER_MODE_STATE 0
+    (2) 全局变量：'关键字' + '_' + '变量名'
+         --> 关键字：在main文件中时，用'g'；在其他文件中时，用文件名前几个字母
+         --> 变量名：由大写字母开头的单词组合而成
+         --> example:  int* g_InputBuffer；
+    (3) 静态变量：'s_' + '变量名'
+    (4) 类成员变量：'m_' + '变量名'
+    (5) 局部变量：'变量属性' + '变量名'
+         --> 变量属性：仅限于数组(a)、指针(p)、句柄(h)，命名优先级a>p>h
+         --> 变量名：当存在变量属性时，由大写字母开头的单词组合而成；否则，第一个单词首字母小写，其他单词字母头大写
+         --> 特例：当缺省变量名且存在变量属性时，数组(array)，指针(p/ptr)，句柄(handle)
+         --> example:  int aPtrElem[10];	int *pElem;	int elemCnt;
+    (6) 常用缩写词：
+         addition	add	加
+         subtraction	sub	减
+         multiplication	mul	乘法
+         division	div	除法
+         answer	ans	响应、回答
+         array	arr	数组、集合
+         average	avg	平均
+         buffer	buf/buff	缓冲区
+         capture	cap/capt	捕获
+         check	chk	检查
+         count	cnt	计数器
+         column	col	列
+         control	ctrl	控制
+         decode	dec	解码/译码
+         define             def           定义
+         delete	del	删除
+         destination	dst/dest	目的
+         display	disp	显示
+         double	dbl	双
+         encode	enc	编码
+         environment	env	环境
+         error	err	错误
+         float	flt	浮动、浮点
+         frequency	freq	频率
+         header	hdr	开始、开头
+         index	idx	索引、指示、
+         image	img	影像、镜像
+         increment	inc	增加、增量
+         initalize	init	初始化
+         iteration	itr	循环、迭代
+         length	len	长度
+         memory	mem	内存
+         middle	mid	中值
+         make	mk	制造、形成
+         message	msg	消息
+         number	num	数量、编号
+         operand	opnd	操作数
+         optimization	opt	最优
+         operator	optr	操作
+         packet	pkt	消息包
+         positon	pos	位置
+         previous	pre/prev	以前的
+         pointer	ptr	指针
+         record	rcd	记录
+         receive	recv	收到、接收
+         result	res	结果
+         return	ret	返回
+         source	src	源头
+         stack	stk	栈
+         string	str	字符串
+         table	tab	表
+         temporary	tmp/temp	临时
+         total	tot	全部的
+         time stamp	ts	时间戳
+         value	val	值
+
+2. 结构体命名
+    (1) 命名格式：
+         typedef struct '结构名'+'_t' {...}'Str'+'结构名', '*Ptr'+'结构名';
+         --> 结构名：由大写字母开头的单词组合而成
+
+3. 函数命名
+
+

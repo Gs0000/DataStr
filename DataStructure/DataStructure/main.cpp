@@ -1,10 +1,12 @@
-#include<iostream>
+#include <iostream>
+#include "LIFO.h"
 
 using namespace std;
 
 int main() 
 {
-	switch ()
+	int a = 0;
+	switch (a)
 	{
 	case 0:
 		break;

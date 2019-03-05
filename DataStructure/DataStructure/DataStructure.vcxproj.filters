@@ -18,12 +18,15 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Stack.c">
+    <ClCompile Include="..\source\LIFO.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Project.h">
+    <ClInclude Include="..\source\GsDEF.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\LIFO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
