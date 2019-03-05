@@ -27,11 +27,14 @@ GI32 Create_LIFO(PtrLIFO *pLIFO)
 GI32 Destroy_LIFO(PtrLIFO *pLIFO)
 {
 	PtrLIFO ptr = NULL;
-	
+
 	if (pLIFO == NULL || *pLIFO == NULL)
 		return Gs_ERROR;
-	
-	free(*pLIFO);
+
+	ptr = *pLIFO;
+	free(ptr->pButtom);
+	pthread_mutex_destroy(&ptr->mutex);
+	free(ptr);
 	*pLIFO = NULL;
 	
 	return Gs_SUCCESS;
@@ -69,7 +72,7 @@ GI32 Push_LIFO_Node(PtrLIFO pLIFO, GUC8 *pNode, GU32 size)
 		return Gs_ERROR;
 
 	if (pLIFO->pTop - pLIFO->pButtom >= pLIFO->nodeCnt*pLIFO->nodeSize)
-		return Gs_ERROR;
+        return Gs_ERROR;
 
 	memcpy(pLIFO->pTop, pNode, size);
 	pLIFO->pTop += pLIFO->nodeSize;
@@ -89,8 +92,8 @@ GI32 Get_LIFO_Node(PtrLIFO pLIFO, GUC8 *pNode, GU32 size)
 
 GI32 Delete_LIFO_Node(PtrLIFO pLIFO, GUC8 *pNode, GU32 size)
 {
-    if (pLIFO == NULL || pNode == NULL || size > pLIFO->nodeSize || pLIFO->pTop == pLIFO->pButtom)
-	    return Gs_ERROR;
+	if (pLIFO == NULL || pNode == NULL || size > pLIFO->nodeSize || pLIFO->pTop == pLIFO->pButtom)
+		return Gs_ERROR;
 
 	pLIFO->pTop -= pLIFO->nodeSize;
 	memcpy(pNode, pLIFO->pTop, size);

@@ -1,14 +1,15 @@
 #include <iostream>
-#include "LIFO.h"
-
+#include "ByLIFO.h"
 using namespace std;
+
 
 int main() 
 {
-	int a = 0;
+	char a = 0;
 	switch (a)
 	{
 	case 0:
+		LineEdit();
 		break;
 	case 1:
 		break;
@@ -20,6 +21,6 @@ int main()
 		break;
 	}
 
+	
 	return 0;
-
 }

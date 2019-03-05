@@ -1,6 +1,12 @@
 #ifndef _LIFO_H_
 #define _LIFO_H_
 
+/******** ******** ******** ******** ******** ******** ******** ********
+
+
+******** ******** ******** ******** ******** ******** ******** ********/
+
+
 #define HAVE_STRUCT_TIMESPEC
 #include <pthread.h>
 #include <semaphore.h>
@@ -42,9 +48,5 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
-
-
-
-
 
 #endif
