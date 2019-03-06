@@ -3,15 +3,18 @@
 using namespace std;
 
 
-int main() 
+int main(int argc, char **argv) 
 {
-	char a = 0;
+	int a = -1;
+	if(argc == 2)
+		a = atoi(argv[1]);
 	switch (a)
 	{
 	case 0:
 		LineEdit();
 		break;
 	case 1:
+		CalcExpression();
 		break;
 	case 2:
 		break;

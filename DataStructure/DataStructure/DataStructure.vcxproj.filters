@@ -21,12 +21,18 @@
     <ClCompile Include="..\source\LIFO.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ByLIFO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GsDEF.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="..\source\LIFO.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ByLIFO.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

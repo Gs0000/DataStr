@@ -1,1 +1,5 @@
-./DataStructure/Debug
+DataStructure/*
+!DataStructure/DataStructure/*
+DataStructure/DataStructure/Debug/*
+!DataStructure/source/*
+!DataStructure/DataStructure.sln
