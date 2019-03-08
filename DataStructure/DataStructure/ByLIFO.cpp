@@ -6,7 +6,7 @@ using namespace std;
 /****************************************************************
     ĞĞÊäÈë±à¼­
 ****************************************************************/
-void LineEdit()
+void Line_Edit()
 {
 	PtrLIFO pLIFO = NULL;
 	GCH8 node;
@@ -53,7 +53,7 @@ void LineEdit()
 GI32 Precede(GCH8 a, GCH8 b);
 GI32 Operate(GI32 a, GI32 b, GCH8 op);
 
-void CalcExpression()
+void Calc_Expression()
 {
 	PtrLIFO pOPTR = NULL;
 	PtrLIFO pOPND = NULL;
@@ -212,3 +212,45 @@ GI32 Operate(GI32 a, GI32 b, GCH8 op)
 		return Gs_ERROR;
 	}
 }
+
+/****************************************************************
+hanoiËşÎÊÌâ
+µİ¹éµ÷ÓÃ
+****************************************************************/
+void Hanoi_Move(GI32 i, GCH8 a, GCH8 b);
+
+//Èı½×Ëş
+void Hanoi_3(GI32 i, GCH8 a, GCH8 b, GCH8 c)
+{
+	if (i == 1)
+		Hanoi_Move(1, a, c);
+	else
+	{
+		Hanoi_3(i - 1, a, c, b);
+		Hanoi_Move(i, a, c);
+		Hanoi_3(i - 1, b, a, c);
+	}
+}
+
+//ËÄ½×Ëş
+void Hanoi_4(GI32 i, GI32 j, GCH8 a, GCH8 b, GCH8 c, GCH8 d)
+{
+	if (i > j)
+	{
+		Hanoi_4(i - j, j, a, c, d, b);
+		Hanoi_3(j, a, c, d);
+		Hanoi_4(i - j, j, b, a, c, d);
+	}
+	else
+	{
+		Hanoi_3(j, a, c, d);
+	}
+
+}
+
+void Hanoi_Move(GI32 i, GCH8 a, GCH8 b)
+{
+	static int cnt = 1;
+	printf("%d: %d -- %c -> %c\n", cnt++, i, a, b);
+}
+

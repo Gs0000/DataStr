@@ -11,12 +11,13 @@ int main(int argc, char **argv)
 	switch (a)
 	{
 	case 0:
-		LineEdit();
+		Line_Edit();
 		break;
 	case 1:
-		CalcExpression();
+		Calc_Expression();
 		break;
 	case 2:
+		Hanoi_3(3, 'A', 'B', 'C');
 		break;
 	case 3:
 		break;
