@@ -149,14 +149,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\FIFO.c" />
     <ClCompile Include="..\source\LIFO.c" />
-    <ClCompile Include="ByLIFO.cpp" />
+    <ClCompile Include="TestAPI.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\FIFO.h" />
     <ClInclude Include="..\source\GsDEF.h" />
     <ClInclude Include="..\source\LIFO.h" />
-    <ClInclude Include="ByLIFO.h" />
+    <ClInclude Include="TestAPI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

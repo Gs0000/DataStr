@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _GSDEF_H_
 #define _GSDEF_H_
 

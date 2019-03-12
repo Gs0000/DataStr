@@ -8,11 +8,11 @@ using namespace std;
 ****************************************************************/
 void Line_Edit()
 {
-	PtrLIFO pLIFO = NULL;
+    PtrLIFO pLIFO = NULL;
 	GCH8 node;
 	GCH8 in;
 
-	Create_LIFO(&pLIFO);
+    pLIFO = (PtrLIFO)malloc(sizeof(StrLIFO));
 	Init_LIFO(pLIFO, 128, 1);
 
 	in = getchar();
@@ -22,7 +22,7 @@ void Line_Edit()
 		switch (in)
 		{
 		case '#':
-			Delete_LIFO_Node(pLIFO, (GUC8*)&node, 1);
+			Pull_LIFO_Node(pLIFO, (GUC8*)&node, 1);
 			break;
 		case '@':
 			Clear_LIFO(pLIFO);
@@ -33,13 +33,14 @@ void Line_Edit()
 		in = getchar();
 	}
 	printf("out: ");
-	while (Delete_LIFO_Node(pLIFO, (GUC8*)&node, 1) == 0)
+	while (Pull_LIFO_Node(pLIFO, (GUC8*)&node, 1) == 0)
 	{
 		printf("%c", node);
 	}
 	printf("\n");
 
-	Destroy_LIFO(&pLIFO);
+	Free_LIFO(pLIFO);
+    free(pLIFO);
 
 	return;
 }
@@ -63,9 +64,9 @@ void Calc_Expression()
 	GCH8 optr = 0;
 	GI32 a, b;
 
-	Create_LIFO(&pOPTR);
+    pOPTR = (PtrLIFO)malloc(sizeof(StrLIFO));
 	Init_LIFO(pOPTR, 128, 1);
-	Create_LIFO(&pOPND);
+    pOPND = (PtrLIFO)malloc(sizeof(StrLIFO));
 	Init_LIFO(pOPND, 128, sizeof(GI32));
 
 	printf("仅支持+、-、*、/、()、=运算\n请输入表达式：");
@@ -108,13 +109,13 @@ void Calc_Expression()
 					in = getchar();
 					break;
 				case 1: //优先级相等，()的情况
-					Delete_LIFO_Node(pOPTR, (GUC8*)&optr, 1);
+					Pull_LIFO_Node(pOPTR, (GUC8*)&optr, 1);
 					in = getchar();
 					break;
 				case 2: //优先级高，计算前面的数据
-					Delete_LIFO_Node(pOPTR, (GUC8*)&optr, 1);
-					Delete_LIFO_Node(pOPND, (GUC8*)&b, 4);
-					Delete_LIFO_Node(pOPND, (GUC8*)&a, 4);
+					Pull_LIFO_Node(pOPTR, (GUC8*)&optr, 1);
+					Pull_LIFO_Node(pOPND, (GUC8*)&b, 4);
+					Pull_LIFO_Node(pOPND, (GUC8*)&a, 4);
 					value = Operate(a, b, optr);
 					Push_LIFO_Node(pOPND, (GUC8*)&value, 4);
 				}
@@ -135,6 +136,11 @@ void Calc_Expression()
 
 	Get_LIFO_Node(pOPND, (GUC8*)&value, 1);
 	printf("res = %d\n", value);
+
+    Free_LIFO(pOPTR);
+    free(pOPTR);
+    Free_LIFO(pOPND);
+    free(pOPND);
 
 	return;
 }
@@ -254,3 +260,55 @@ void Hanoi_Move(GI32 i, GCH8 a, GCH8 b)
 	printf("%d: %d -- %c -> %c\n", cnt++, i, a, b);
 }
 
+/****************************************************************
+八皇后问题
+回溯递归调用
+****************************************************************/
+GUC8 Test_Queen[8] = {0};
+
+GI32 Point_OK(GI32 row, GI32 col);
+
+void Queen(GI32 row)
+{
+    static int cnt = 0;
+    int i;
+
+    if (row == 8)
+    {
+        cnt ++;
+    }
+    else
+    {
+        for (i = 0; i < 8; i++)
+        {
+            if (Point_OK(row, i))
+            {
+                Test_Queen[row] = i+1;
+                Queen(row + 1);
+                Test_Queen[row] = 0;
+            }
+        }
+    }
+
+    if (row == 0)
+        printf("Problem of eight queen has %d solutions\n", cnt);
+
+    return;
+}
+
+GI32 Point_OK(GI32 row, GI32 col)
+{
+    GUC8 setPoint;
+    int i;
+    for (i = 0; i < row; i++)
+    {
+        setPoint = Test_Queen[i] - 1;
+        if (setPoint == col)
+            return 0;
+        if (i - setPoint == row - col)
+            return 0;
+        if (i + setPoint == row + col)
+            return 0;
+    }
+    return 1;
+}

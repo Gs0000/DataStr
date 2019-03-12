@@ -1,7 +1,6 @@
 #include <iostream>
-#include "ByLIFO.h"
+#include "TestAPI.h"
 using namespace std;
-
 
 int main(int argc, char **argv) 
 {
@@ -11,16 +10,13 @@ int main(int argc, char **argv)
 	switch (a)
 	{
 	case 0:
-		Line_Edit();
-		break;
+		Line_Edit(); break;	
 	case 1:
-		Calc_Expression();
-		break;
+		Calc_Expression(); break;
 	case 2:
-		Hanoi_3(3, 'A', 'B', 'C');
-		break;
+		Hanoi_3(3, 'A', 'B', 'C'); break;		
 	case 3:
-		break;
+        Queen(0); break;	
 	default:
 		break;
 	}
