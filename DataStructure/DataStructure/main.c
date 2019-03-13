@@ -2,11 +2,12 @@
 #include <stdlib.h>
 #include "TestAPI.h"
 
-int main(int argc, char **argv) 
+int main(int argc, char *argv[]) 
 {
 	int a = -1;
 	if(argc >= 2)
 		a = atoi(argv[1]);
+
 	switch (a)
 	{
 	case 0:
@@ -23,6 +24,5 @@ int main(int argc, char **argv)
 		break;
 	}
 
-	
 	return 0;
 }

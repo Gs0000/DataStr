@@ -315,12 +315,12 @@ GI32 Point_OK(GI32 row, GI32 col)
 }
 
 /****************************************************************
-KMP算法解决字符串中查找子串
+KMP算法解决字符串中查找子串问题
 子串最大长度为127
 ****************************************************************/
 GI32* KMP_Next(GCH8 *pT);
 
-GI32 KMP_Locate()
+void KMP_Locate()
 {
     GCH8 S[256] = { 0 };
     GCH8 T[128] = { 0 };
@@ -337,7 +337,7 @@ GI32 KMP_Locate()
 
     pNext = KMP_Next(T);
     if (!pNext)
-        return Gs_ERROR;
+        return ;
 
     sLen = (GI32)strlen(S);
     tLen = (GI32)strlen(T);
@@ -367,7 +367,7 @@ GI32 KMP_Locate()
 
     free(pNext);
 
-    return Gs_SUCCESS;
+    return ;
 }
 
 GI32* KMP_Next(GCH8 *pT)
