@@ -7,7 +7,7 @@
 GI32 Init_FIFO(PtrFIFO pFIFO, GU32 nodeCnt, GU32 nodeSize)
 {
     PtrQueueNode pNode;
-    int i;
+    GU32 i;
 
     if (pFIFO == NULL || nodeCnt < 2 || !nodeSize)
         return Gs_ERROR;

@@ -1,7 +1,8 @@
-#include <iostream>
-#include "LIFO.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-using namespace std;
+#include "LIFO.h"
 
 /****************************************************************
     行输入编辑
@@ -311,4 +312,84 @@ GI32 Point_OK(GI32 row, GI32 col)
             return 0;
     }
     return 1;
+}
+
+/****************************************************************
+KMP算法解决字符串中查找子串
+子串最大长度为127
+****************************************************************/
+GI32* KMP_Next(GCH8 *pT);
+
+GI32 KMP_Locate()
+{
+    GCH8 S[256] = { 0 };
+    GCH8 T[128] = { 0 };
+    GI32 *pNext = NULL;
+    GI32 sLen = 0;
+    GI32 tLen = 0;
+    GI32 cnt = 0;
+    GI32 i, j;
+
+    printf("input search string: ");
+    gets_s(S, 255);
+    printf("input search target: ");
+    gets_s(T, 127);
+
+    pNext = KMP_Next(T);
+    if (!pNext)
+        return Gs_ERROR;
+
+    sLen = (GI32)strlen(S);
+    tLen = (GI32)strlen(T);
+
+    for (i = 0, j = 0; i < sLen;)
+    {
+        if (j == tLen)
+        {
+            cnt ++;
+            j = 0;
+        }
+        else if(j == -1 || S[i] == T[j])
+        {
+            i ++;
+            j ++;
+        }
+        else
+        {
+            j = pNext[j];
+        }
+    }
+
+    if (j == tLen)
+        cnt++;
+
+    printf("search count : %d\n", cnt);
+
+    free(pNext);
+
+    return Gs_SUCCESS;
+}
+
+GI32* KMP_Next(GCH8 *pT)
+{
+    GI32 length = 0;
+    GI32 *pNext = NULL;
+    GI32 i, j;
+
+    length = (GI32)strlen(pT);
+    if (length ==0 || length > 127)
+        return NULL;
+
+    pNext = (GI32 *)malloc(length*sizeof(GI32));
+    pNext[0] = -1;
+    j = -1;
+    for (i = 0; i < length - 1;)
+    {
+        if (j == -1 || pT[i] == pT[j])
+            pNext[++i] = ++j;
+        else
+            j = pNext[j];
+    }
+
+    return pNext;
 }

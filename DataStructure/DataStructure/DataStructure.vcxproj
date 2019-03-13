@@ -151,8 +151,8 @@
   <ItemGroup>
     <ClCompile Include="..\source\FIFO.c" />
     <ClCompile Include="..\source\LIFO.c" />
-    <ClCompile Include="TestAPI.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="TestAPI.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\FIFO.h" />

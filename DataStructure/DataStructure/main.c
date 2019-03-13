@@ -1,11 +1,11 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include "TestAPI.h"
-using namespace std;
 
 int main(int argc, char **argv) 
 {
 	int a = -1;
-	if(argc == 2)
+	if(argc >= 2)
 		a = atoi(argv[1]);
 	switch (a)
 	{
@@ -16,7 +16,9 @@ int main(int argc, char **argv)
 	case 2:
 		Hanoi_3(3, 'A', 'B', 'C'); break;		
 	case 3:
-        Queen(0); break;	
+        Queen(0); break;
+    case 4:
+        KMP_Locate(); break;
 	default:
 		break;
 	}

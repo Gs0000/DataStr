@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="..\source\LIFO.c">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="..\source\FIFO.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="TestAPI.cpp">
+    <ClCompile Include="main.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestAPI.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
