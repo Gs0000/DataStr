@@ -149,12 +149,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\source\BiTree.c" />
     <ClCompile Include="..\source\FIFO.c" />
     <ClCompile Include="..\source\LIFO.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="TestAPI.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\source\BiTree.h" />
     <ClInclude Include="..\source\FIFO.h" />
     <ClInclude Include="..\source\GsDEF.h" />
     <ClInclude Include="..\source\LIFO.h" />

@@ -3,6 +3,10 @@
 #define _TESTAPI_H_
 #include "GsDEF.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*行输入编辑*/
 void Line_Edit();
 
@@ -19,5 +23,11 @@ void Queen(GI32 row);
 /*KMP算法解决字符串中查找子串问题*/
 void KMP_Locate();
 
+/*二叉树问题*/
+void Test_BiTree();
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

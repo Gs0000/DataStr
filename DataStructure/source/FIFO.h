@@ -41,6 +41,7 @@ typedef struct Queue_t {
 extern "C" {
 #endif
 
+    /*需要提前申请pFIFO内存空间*/
     GI32 Init_FIFO(PtrFIFO pFIFO, GU32 nodeCnt, GU32 nodeSize); // 初始化队列空间
 	GI32 Free_FIFO(PtrFIFO pFIFO); // 释放队列空间
     GI32 FIFO_Length(PtrFIFO pFIFO); // 获取队列数据长度

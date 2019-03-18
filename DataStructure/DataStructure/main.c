@@ -20,6 +20,8 @@ int main(int argc, char *argv[])
         Queen(0); break;
     case 4:
         KMP_Locate(); break;
+    case 5:
+        Test_BiTree(); break;
 	default:
 		break;
 	}

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "LIFO.h"
+#include "BiTree.h"
 
 /****************************************************************
     行输入编辑
@@ -70,7 +71,7 @@ void Calc_Expression()
     pOPND = (PtrLIFO)malloc(sizeof(StrLIFO));
 	Init_LIFO(pOPND, 128, sizeof(GI32));
 
-	printf("仅支持+、-、*、/、()、=运算\n请输入表达式：");
+	printf("Only support +、-、*、/、()、=\nPlease input expression：");
 
 	in = getchar();
 	while (in != EOF && optr!= '=')
@@ -330,9 +331,9 @@ void KMP_Locate()
     GI32 cnt = 0;
     GI32 i, j;
 
-    printf("input search string: ");
+    printf("Input search string: ");
     gets_s(S, 255);
-    printf("input search target: ");
+    printf("Input search target: ");
     gets_s(T, 127);
 
     pNext = KMP_Next(T);
@@ -377,7 +378,7 @@ GI32* KMP_Next(GCH8 *pT)
     GI32 i, j;
 
     length = (GI32)strlen(pT);
-    if (length ==0 || length > 127)
+    if (length == 0 || length > 127)
         return NULL;
 
     pNext = (GI32 *)malloc(length*sizeof(GI32));
@@ -392,4 +393,39 @@ GI32* KMP_Next(GCH8 *pT)
     }
 
     return pNext;
+}
+
+/****************************************************************
+二叉树问题
+****************************************************************/
+GI32 Input_BiTree(PtrBiTree pTree);
+
+void Test_BiTree()
+{
+    PtrBiTree pTree = NULL;
+    Input_BiTree(&pTree);
+
+
+
+}
+
+GI32 Input_BiTree(PtrBiTree *pTree)
+{
+    GCH8 in = '/';
+
+    in = getchar();
+    if (in == ' ' || in == '\n' || in == EOF || in == '\0')
+    {
+        *pTree = NULL;
+    }
+    else
+    {
+        *pTree = (PtrBiTree)malloc(sizeof(StrBiTree));
+        (*pTree)->ptr = (GCH8*)malloc(1);
+        (*pTree)->ptr[0] = in;
+        Input_BiTree(&((*pTree)->pLChild));
+        Input_BiTree(&((*pTree)->pRChild));
+    }
+
+    return Gs_SUCCESS;
 }

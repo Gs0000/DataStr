@@ -34,6 +34,7 @@ typedef struct LIFO_t {
 extern "C" {
 #endif
 
+    /*需要提前申请pLIFO内存空间*/
     GI32 Init_LIFO(PtrLIFO pLIFO, GU32 nodeCnt, GU32 nodeSize); // 初始化栈空间
 	GI32 Free_LIFO(PtrLIFO pLIFO); // 释放栈空间
     GI32 LIFO_Length(PtrLIFO pLIFO); // 获取栈数据深度 

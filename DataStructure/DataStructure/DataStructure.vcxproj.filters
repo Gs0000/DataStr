@@ -27,6 +27,9 @@
     <ClCompile Include="TestAPI.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\BiTree.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\GsDEF.h">
@@ -39,6 +42,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TestAPI.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\BiTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
