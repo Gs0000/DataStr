@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h> 
 
 #include "LIFO.h"
 #include "BiTree.h"
+#include "Timer.h"
 
 /****************************************************************
     行输入编辑
@@ -398,34 +400,116 @@ GI32* KMP_Next(GCH8 *pT)
 /****************************************************************
 二叉树问题
 ****************************************************************/
-GI32 Input_BiTree(PtrBiTree pTree);
+GI32 Input_BiTree(PtrBiTree *pTree);
 
 void Test_BiTree()
 {
     PtrBiTree pTree = NULL;
     Input_BiTree(&pTree);
 
-
+    Traverse_BiTree_1(pTree);
 
 }
 
 GI32 Input_BiTree(PtrBiTree *pTree)
 {
-    GCH8 in = '/';
+    static GCH8 in = 0;
 
-    in = getchar();
-    if (in == ' ' || in == '\n' || in == EOF || in == '\0')
+    if(in != '\n' && in != EOF)
+        in = getchar();
+
+    if (in == ' ' || in == '\n' || in == EOF)
     {
         *pTree = NULL;
     }
     else
     {
         *pTree = (PtrBiTree)malloc(sizeof(StrBiTree));
-        (*pTree)->ptr = (GCH8*)malloc(1);
-        (*pTree)->ptr[0] = in;
+        (*pTree)->ptr = (GUC8*)malloc(1);
+        (*pTree)->ptr[0] = (GUC8)in;
         Input_BiTree(&((*pTree)->pLChild));
         Input_BiTree(&((*pTree)->pRChild));
     }
 
     return Gs_SUCCESS;
+}
+
+/****************************************************************
+huffman编码
+****************************************************************/
+void Test_HuffmanCode(GI32 cnt)
+{
+    StrHuffmanTree tree;
+    GCH8 **pCode;
+    GI32 *pWeight;
+
+    GI32 i;
+
+    pCode = (GCH8**)malloc(cnt*sizeof(GCH8*));
+    pWeight = (GI32*)malloc(cnt*sizeof(GI32));
+    srand(1);
+    for (i = 0; i < cnt; i++)
+    {
+        pWeight[i] = rand() % 20;
+    }
+
+    Huffman_Code(&tree, pCode, pWeight, cnt);
+
+    for (i = 0; i < cnt; i++)
+    {
+        printf("w[%2d] = %2d    code = %s\n", i, pWeight[i], pCode[i]);
+    }
+
+    return;
+}
+
+/****************************************************************
+CPU占用问题
+使CPU使用率呈正弦曲线
+****************************************************************/
+#define PI 3.14159265
+
+void CPU_Cost()
+{
+    struct tm timer;
+    GU32 start;
+    GU32 aTime[100];
+
+    GI32 i, j;
+
+#ifdef Gs_WIN
+
+    //设置进程优先级
+    printf("process id is %d\n", GetCurrentProcessId());
+    SetPriorityClass(GetCurrentProcess(), HIGH_PRIORITY_CLASS);
+    //设置进程CPU亲和度
+    //在多处理器计算机中，单字节关联掩码 最多可以涵盖 8 个 CPU；在多处理器计算机中，双字节关联掩码 最多可以涵盖 16 个 CPU。
+    //打开第0个cpu：00000001（二进制） = 1（十进制）
+    //打开第1个cpu：00000010（二进制） = 2（十进制）
+    //打开第2个cpu：00000100（二进制） = 4（十进制）
+    //打开第3个cpu：00001000（二进制） = 8（十进制）
+    //打开第1和第3个cpu：00001000（二进制） + 00000010 = 8（十进制） + 2（十进制） = 10（十进制）
+    SetProcessAffinityMask(GetCurrentProcess(), 2);
+
+    Get_Cur_Time(&timer);
+    printf("The date is %04d年%02d月%02d日\n", timer.tm_year, timer.tm_mon, timer.tm_mday);
+
+    for (i = 0; i < 100; i++)
+    {
+        aTime[i] = (GU32)(sin(PI*i / 50.0) * 100 + 100);
+    }
+
+    j = 0;
+    while (j ++ < 100000)
+    {
+        for (i = 0; i < 100; i++)
+        {
+            start = GetTickCount();
+            while (GetTickCount() - start < aTime[i]);
+            Sleep(200 - aTime[i]);
+        }
+    }
+
+#endif
+    return;
 }

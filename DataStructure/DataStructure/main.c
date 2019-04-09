@@ -22,6 +22,10 @@ int main(int argc, char *argv[])
         KMP_Locate(); break;
     case 5:
         Test_BiTree(); break;
+    case 6:
+        Test_HuffmanCode(8); break;
+    case 7:
+        CPU_Cost(); break;
 	default:
 		break;
 	}

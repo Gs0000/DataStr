@@ -23,8 +23,14 @@ void Queen(GI32 row);
 /*KMP算法解决字符串中查找子串问题*/
 void KMP_Locate();
 
-/*二叉树问题*/
+/*遍历二叉树*/
 void Test_BiTree();
+
+/*Huffman编码*/
+void Test_HuffmanCode(GI32 cnt);
+
+/*CPU占用问题*/
+void CPU_Cost();
 
 #ifdef __cplusplus
 }

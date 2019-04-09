@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _LIFO_H_
 #define _LIFO_H_
 

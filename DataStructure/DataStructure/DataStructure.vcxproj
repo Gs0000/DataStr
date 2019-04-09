@@ -83,6 +83,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IncludePath>C:\Users\GS\Desktop\DataStr\DataStructure\source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -152,6 +153,7 @@
     <ClCompile Include="..\source\BiTree.c" />
     <ClCompile Include="..\source\FIFO.c" />
     <ClCompile Include="..\source\LIFO.c" />
+    <ClCompile Include="..\source\Timer.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="TestAPI.c" />
   </ItemGroup>
@@ -160,6 +162,7 @@
     <ClInclude Include="..\source\FIFO.h" />
     <ClInclude Include="..\source\GsDEF.h" />
     <ClInclude Include="..\source\LIFO.h" />
+    <ClInclude Include="..\source\Timer.h" />
     <ClInclude Include="TestAPI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
